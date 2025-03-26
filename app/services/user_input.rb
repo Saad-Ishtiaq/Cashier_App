@@ -18,4 +18,17 @@ module UserInput
       valid_codes
     end
   end
+
+  def self.select_pricing_rules
+    active_rules = []
+    active_rules << PricingRules::CEORule if enable_rule?("CEO's BOGOF rule for Green Tea?")
+    active_rules << PricingRules::COORule if enable_rule?("COO's bulk discount for Strawberries?")
+    active_rules << PricingRules::CTORule if enable_rule?("CTO's Coffee discount?")
+    active_rules
+  end
+
+  private_class_method def self.enable_rule?(prompt)
+    puts "Apply #{prompt} (yes/no)"
+    gets.chomp.downcase == 'yes'
+  end
 end

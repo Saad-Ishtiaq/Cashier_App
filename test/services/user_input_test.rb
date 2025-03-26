@@ -21,4 +21,20 @@ class UserInputTest < Minitest::Test
 
     assert_equal ['GR1'], valid_codes
   end
+
+  def test_select_pricing_rules
+    UserInput.stubs(:enable_rule?).returns(true, false, false)
+    rules = UserInput.select_pricing_rules
+
+    assert_includes rules, PricingRules::CEORule
+    refute_includes rules, PricingRules::COORule
+    refute_includes rules, PricingRules::CTORule
+  end
+
+  def test_select_pricing_rules_with_empty_input
+    UserInput.stubs(:enable_rule?).returns(false, false, false)
+    rules = UserInput.select_pricing_rules
+
+    assert_empty rules
+  end
 end
