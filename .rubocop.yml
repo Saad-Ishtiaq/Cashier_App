@@ -1,0 +1,27 @@
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  Exclude:
+    - 'Gemfile'
+    - 'vendor/**/*'     
+    - 'test/**/*'       
+    - 'data/**/*'        
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*.rb'   
+
+Metrics/ClassLength:
+  Max: 120    
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/AbcSize:
+  Max: 25     
+
+Style/Documentation:
+  Enabled: false     
+
+Style/FrozenStringLiteralComment:
+  Enabled: false      
