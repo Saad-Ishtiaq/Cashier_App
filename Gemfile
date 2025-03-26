@@ -10,4 +10,4 @@ end
 
 gem 'rubocop', '~> 1.56', require: false
 gem 'rubocop-minitest', '~> 0.31.0', require: false
-
+gem 'byebug'
